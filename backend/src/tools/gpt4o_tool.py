@@ -1,21 +1,25 @@
 import os
-import openai  
+import openai
 
 class GPT4oTool:
     def __init__(self):
-        # Obtenemos el API key de las variables de entorno
-        self.api_key = os.getenv("OPENAI_API_KEY")
+        self.api_key = os.getenv("GPT4O_API_KEY")
         openai.api_key = self.api_key
+        self.name = "GPT4oTool"
+        self.description = "Genera respuestas utilizando el modelo GPT-4o-mini para consultas generales."
+        self.model_fields = {
+            "prompt": "El mensaje o pregunta a la que se quiere obtener una respuesta."
+        }
 
     def generate_response(self, prompt: str) -> str:
+        # Resto del código...
+
         try:
-            # Llamada al modelo GPT-4o-mini mediante OpenAI
             response = openai.Completion.create(
-                model="gpt-4o-mini",  # Especificamos el modelo
+                model="gpt-4o-mini",  # Modelo específico
                 prompt=prompt,
-                max_tokens=200  # Ajusta el límite de tokens según sea necesario
+                max_tokens=200  # Ajuste según necesidad
             )
-            # Devolvemos el texto generado
             return response.choices[0].text.strip()
         except Exception as e:
             return f"Error al generar respuesta con GPT-4o-mini: {e}"

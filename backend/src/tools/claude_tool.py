@@ -1,26 +1,25 @@
 import os
-import anthropic  # Importamos la librería Anthropic
-from dotenv import load_dotenv  # Importamos dotenv para cargar el archivo .env
-
-# Cargar las variables de entorno desde .env
-load_dotenv()
+from anthropic import Anthropic
 
 class ClaudeTool:
     def __init__(self):
-        # Obtenemos la clave de API desde el entorno
         self.api_key = os.getenv("CLAUDE_API_KEY")
-        os.environ["ANTHROPIC_API_KEY"] = self.api_key  # Establecemos la API key en el entorno
-        self.client = anthropic.Client()  # Instanciamos el cliente sin argumentos adicionales
+        self.client = Anthropic(api_key=self.api_key)
+        self.name = "ClaudeTool"
+        self.description = "Genera respuestas utilizando el modelo Claude Haiku para consultas generales."
+        self.model_fields = {
+            "prompt": "El mensaje o pregunta a la que se quiere obtener una respuesta."
+        }
 
     def generate_response(self, prompt: str) -> str:
+        # Resto del código...
+
         try:
-            # Llamada al modelo Claude Haiku mediante Anthropic
             response = self.client.completions.create(
-                model="claude-haiku",  # Especificamos el modelo
+                model="claude-haiku",
                 prompt=prompt,
-                max_tokens=200  # Ajusta el límite de tokens según sea necesario
+                max_tokens=200
             )
-            # Devolvemos el texto generado
             return response.completion.strip()
         except Exception as e:
             return f"Error al generar respuesta con Claude Haiku: {e}"
