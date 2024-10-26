@@ -10,12 +10,12 @@ const exampleMessages = [
     message: `¡Hola! Parece que mi café decidió tomarse un descanso antes de llegar a mi casa. ¿Podrían ayudarme a encontrarlo?`
   },
   {
-    heading: 'Recibí el café equivocado',
-    message: 'Pedí un cappuccino y recibí un latte. No es que no me guste el latte, pero mi cappuccino y yo teníamos planes. ¿Podrían ayudarme con esto?'
-  },
-  {
     heading: 'Necesito modificar mi dirección de entrega',
     message: `Intenté cambiar mi dirección de entrega, pero creo que mi café se fue a una aventura distinta. ¿Podemos redirigirlo antes de que se pierda?`
+  },
+  {
+    heading: 'Recomendación de Café',
+    message: `Me gustan los cafés suaves pero con un toque especial. Busco algo que me diga 'buenos días' sin gritarme al oído. ¿Podrían recomendarme alguno que se ajuste a mis gustos?`
   }
 ]
 
