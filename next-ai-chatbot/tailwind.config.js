@@ -17,44 +17,50 @@ module.exports = {
         sans: ['var(--font-sans)', ...fontFamily.sans]
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        border: '#C8A27E',        // Café Latte
+        input: '#C8A27E',         // Café Latte
+        ring: '#C8A27E',          // Café Latte
+        background: {
+          DEFAULT: '#E8E0DA',     // Gris café suave
+          dark: '#362420',        // Gris café oscuro
+        },
+        foreground: {
+          DEFAULT: '#4B2E2B',     // Marrón Espresso
+          dark: '#FFFFFF',        // Blanco para modo oscuro
+        },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          DEFAULT: '#8F9D5A',     // Verde Hoja
+          foreground: '#FFFFFF',  // Blanco
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          DEFAULT: '#C8A27E',     // Café Latte
+          foreground: '#4B2E2B',  // Marrón Espresso
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          DEFAULT: '#991B1B',     // Rojo destructivo
+          foreground: '#FEFEFE',  // Casi blanco
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: '#F3E5AB',     // Crema suave
+          foreground: '#5A5A5A',  // Gris Pizarra
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+          DEFAULT: '#C8A27E',     // Café Latte
+          foreground: '#4B2E2B',  // Marrón Espresso
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          DEFAULT: '#E8E0DA',     // Gris café suave
+          foreground: '#4B2E2B',  // Marrón Espresso
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
+          DEFAULT: '#E8E0DA',     // Gris café suave
+          foreground: '#4B2E2B',  // Marrón Espresso
         }
       },
       borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: 'calc(var(--radius) - 4px)'
+        lg: '0.5rem',
+        md: '0.375rem',
+        sm: '0.25rem'
       },
       keyframes: {
         'accordion-down': {
