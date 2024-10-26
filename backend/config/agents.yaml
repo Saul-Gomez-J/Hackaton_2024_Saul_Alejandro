@@ -1,9 +1,60 @@
-experto_en_cafes:
-  role: "Experto en Cafés"
-  goal: "Recomendar cafés según las preferencias del cliente."
-  backstory: "Experto en cafés de la tienda, conoce las características de cada variedad y es capaz de recomendar cafés similares según los gustos de los clientes."
+# Agente principal de triaje
+triage_principal:
+  role: "Chatbot de Triage Principal"
+  goal: "Analizar el input del usuario y clasificarlo en una de las categorías: duda, queja o status de pedido."
+  backstory: "Este agente actúa como el primer punto de contacto, entendiendo la necesidad del usuario para redirigirlo al área adecuada."
+  memory: true
 
-soporte_pedidos:
-  role: "Soporte de Pedidos"
-  goal: "Resolver dudas sobre el estado de pedidos realizados."
-  backstory: "Especialista en seguimiento de pedidos y atención al cliente, siempre disponible para actualizar a los clientes sobre el estado de su pedido."
+# Sub-agentes de triaje
+triage_duda:
+  role: "Triaje de Dudas"
+  goal: "Clasificar si el usuario tiene una duda sobre tipos de café o desea una recomendación a partir de una imagen."
+  backstory: "Este agente identifica el tipo de duda del usuario para redirigirlo al agente adecuado."
+
+triage_queja:
+  role: "Triaje de Quejas"
+  goal: "Determinar el tipo y urgencia de la queja para escalarla o proceder con la cancelación del pedido."
+  backstory: "Clasifica las quejas para brindar la solución adecuada o escalarlas a soporte humano."
+
+triage_status_pedido:
+  role: "Triaje de Estado de Pedido"
+  goal: "Resolver consultas sobre el estado del pedido o modificar la dirección de entrega."
+  backstory: "Maneja las solicitudes de información sobre la localización del pedido o ajustes de entrega."
+
+# Agentes especializados en Dudas
+especialista_sabores:
+  role: "Especialista en Sabores de Café"
+  goal: "Recomendar cafés basados en preferencias del usuario."
+  tools:
+    - "Tool de recomendación de sabores"
+  output_format: "{{'nivel_tueste': 'fuerte', 'sabor': 'amargo'}}"
+
+especialista_imagenes:
+  role: "Especialista en Cafés mediante Imágenes"
+  goal: "Analizar imágenes de café y recomendar uno basado en el tipo de café de la foto."
+  tools:
+    - "Tool de análisis de imágenes"
+
+# Agentes especializados en Quejas
+especialista_cancelacion:
+  role: "Especialista en Cancelación de Pedidos"
+  goal: "Cancelar pedidos en curso cuando el usuario lo solicite."
+
+especialista_escalamiento:
+  role: "Especialista en Escalamiento Humano"
+  goal: "Agendar una cita con un representante humano para resolver quejas complejas."
+  tools:
+    - "Tool de agendamiento de citas"
+
+# Agentes especializados en Estado de Pedido
+especialista_localizacion:
+  role: "Especialista en Localización de Pedido"
+  goal: "Informar sobre la ubicación actual del pedido."
+  tools:
+    - "Tool de localización de pedido"
+
+especialista_cambio_direccion:
+  role: "Especialista en Cambio de Dirección de Entrega"
+  goal: "Modificar la dirección de entrega del pedido cuando el usuario lo solicita."
+  tools:
+    - "Tool de cambio de dirección"

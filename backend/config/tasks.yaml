@@ -1,14 +1,52 @@
-consulta_cafes_task:
-  description: >
-    Recomendar cafés basados en los gustos del cliente.
-    El cliente proporciona un tipo de café que le gusta, y el agente debe responder con cafés similares disponibles en la tienda.
-  expected_output: >
-    Lista de cafés similares con sus características y descripciones.
+# Tarea para el agente principal de triaje
+triage_task_principal:
+  description: "Clasificar el input del usuario como duda, queja o consulta sobre el estado del pedido."
+  agent: triage_principal
+  expected_output: "Redirigir al sub-agente adecuado: triage_duda, triage_queja o triage_status_pedido."
 
-consulta_pedidos_task:
-  description: >
-    Consultar el estado de un pedido específico en la base de datos.
-    El agente verificará el estado y detalles del pedido para responder preguntas del cliente.
-  expected_output: >
-    Respuesta detallada con el estado del pedido, productos incluidos, fecha de realización,
-    y cualquier información relevante sobre el proceso.
+# Tareas para sub-agentes de triaje
+triage_duda_task:
+  description: "Clasificar la duda del usuario como: consulta sobre sabores o consulta mediante imagen."
+  agent: triage_duda
+  expected_output: "Redirigir a especialista_sabores o especialista_imagenes."
+
+triage_queja_task:
+  description: "Determinar el tipo de queja: cancelar pedido o escalar a soporte humano."
+  agent: triage_queja
+  expected_output: "Redirigir a especialista_cancelacion o especialista_escalamiento."
+
+triage_status_pedido_task:
+  description: "Determinar si el usuario necesita información sobre la localización del pedido o cambiar la dirección de entrega."
+  agent: triage_status_pedido
+  expected_output: "Redirigir a especialista_localizacion o especialista_cambio_direccion."
+
+# Tareas para agentes especializados
+duda_sabores_task:
+  description: "Recomendar un café basado en las preferencias proporcionadas por el usuario."
+  agent: especialista_sabores
+  expected_output: "Recomendación en formato {{'nivel_tueste': 'fuerte', 'sabor': 'amargo'}}."
+
+duda_imagenes_task:
+  description: "Analizar la imagen del café y recomendar uno basado en el tipo de café de la imagen."
+  agent: especialista_imagenes
+  expected_output: "Recomendación en formato {{'nivel_tueste': 'fuerte', 'sabor': 'amargo'}}."
+
+queja_cancelacion_task:
+  description: "Cancelar el pedido en curso solicitado por el usuario."
+  agent: especialista_cancelacion
+  expected_output: "Confirmación de cancelación del pedido."
+
+queja_escalamiento_task:
+  description: "Agendar una cita con un representante humano para el usuario."
+  agent: especialista_escalamiento
+  expected_output: "Confirmación de cita agendada."
+
+status_localizacion_task:
+  description: "Proporcionar la ubicación actual del pedido al usuario."
+  agent: especialista_localizacion
+  expected_output: "Detalles de ubicación del pedido."
+
+status_cambio_direccion_task:
+  description: "Actualizar la dirección de entrega del pedido según la solicitud del usuario."
+  agent: especialista_cambio_direccion
+  expected_output: "Confirmación de cambio de dirección."
