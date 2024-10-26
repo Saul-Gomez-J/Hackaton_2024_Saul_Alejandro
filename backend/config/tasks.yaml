@@ -1,0 +1,14 @@
+consulta_cafes_task:
+  description: >
+    Recomendar cafés basados en los gustos del cliente.
+    El cliente proporciona un tipo de café que le gusta, y el agente debe responder con cafés similares disponibles en la tienda.
+  expected_output: >
+    Lista de cafés similares con sus características y descripciones.
+
+consulta_pedidos_task:
+  description: >
+    Consultar el estado de un pedido específico en la base de datos.
+    El agente verificará el estado y detalles del pedido para responder preguntas del cliente.
+  expected_output: >
+    Respuesta detallada con el estado del pedido, productos incluidos, fecha de realización,
+    y cualquier información relevante sobre el proceso.
